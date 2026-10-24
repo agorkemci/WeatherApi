@@ -6,7 +6,7 @@ using WeatherApi.Dtos;
 namespace WeatherApi.Controllers
 {
     [ApiController]//bu sınıfı bir API Controller yapar
-    //Controller base ile view support gider
+    //Controller base ile view support giderr
     [Route("api/[controller]")]//api/"controllerdan kalan ad ne ise o
     //örnek CitiesController ==> api/cities
     public class CitiesController : ControllerBase
