@@ -1,8 +1,17 @@
+using WeatherWeb.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
+builder.Services.AddHttpClient<WeatherApiClient>(client=>
+{
+    var baseUrl = builder.Configuration["ApiSettings:BaseUrl"] ?? throw new InvalidOperationException("ApiSettings:BaseUrl bulunamadı.");
+    client.BaseAddress=new Uri(baseUrl);
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
