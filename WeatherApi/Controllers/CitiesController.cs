@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using WeatherApi.Data;
 using WeatherApi.Dtos;
+using WeatherApi.Models;
 
 namespace WeatherApi.Controllers
 {
@@ -40,6 +41,21 @@ namespace WeatherApi.Controllers
             if (city == null)
                 return NotFound();
             return Ok(city);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<CityForecastDto>>> GetCities()
+        {
+            var cities = await _weatherDbContext.Cities
+                .AsNoTracking()
+                .OrderBy(c => c.Name)
+                .Select(c => new CityForecastDto
+                {
+                    CityId = c.Id,
+                    CityName = c.Name,
+                    Country = c.Country,
+                }).ToListAsync();
+            return Ok(cities);
         }
     }
 }

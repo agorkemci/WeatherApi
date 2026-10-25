@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="WeatherApi/WeatherApi.csproj" />
+  <Project Path="WeatherWeb/WeatherWeb.csproj" Id="7d4aa2e4-55e4-45d6-b8af-ba53b547be84" />
 </Solution>
